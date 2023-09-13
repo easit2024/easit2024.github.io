@@ -1,28 +1,41 @@
 ---
+import SpaceLR from "../components/SpaceLR.astro";
 import Layout from "../layouts/Layout.astro";
 import { Icon } from  "astro-icon";
 ---
 
 <Layout title="Access - EASIT2024">
-    <h1>Map</h1>
-    <div class="map pt-[75%] sm:pt-[56.25%]">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13031.448796430108!2d139.59886424840636!3d35.25968386361544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184754a9f32865%3A0x7708c6faa4945487!2z5rmY5Y2X5Zu96Zqb5p2R44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1694578687164!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div>
-        <div class="flex">
-            <Icon name="ic:round-train" class="w-6 h-6 text-blue-800" />
-            How to Access by train
+    <SpaceLR start="2" end="12">
+        <div class="text-lg mb-4">
+            Venue: 
+            <a href="https://shonan-village.co.jp/eng/" class="text-blue-500 hover:text-blue-700 visited:text-purple-500">
+                Shonan village center
+                <Icon name="akar-icons:link-out" class="w-5 h-5 inline-block" />
+            </a>
         </div>
-        <p>
-            Haneda airport<br>
-            &darr; Keikyu Airport Line: 30min<br>
-            Yokohama station<br>
-            &darr; JR Yokosuka Line: 30min<br>
-            Zushi station<br>
-            &darr; Bus &sharp;16 to Shonan village: 30min<br>
-            Shonan village center
-        </p>
-    </div>
+        <div class="map mb-4 pt-[75%] sm:pt-[56.25%] md:pt-[450px]">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13031.448796430108!2d139.59886424840636!3d35.25968386361544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184754a9f32865%3A0x7708c6faa4945487!2z5rmY5Y2X5Zu96Zqb5p2R44K744Oz44K_44O8!5e0!3m2!1sja!2sjp!4v1694578687164!5m2!1sja!2sjp"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                class="w-[100%] h-[100%] md:w-[600px] md:h-[450px]"
+            ></iframe>
+        </div>
+        <div>
+            <div class="flex">
+                <Icon name="ic:round-train" class="w-6 h-6 text-blue-800" />
+                How to Access
+            </div>
+            <p>
+                Haneda airport<br>
+                &darr; Keikyu Airport Line: 30min<br>
+                Yokohama station<br>
+                &darr; JR Yokosuka Line: 30min<br>
+                Zushi station<br>
+                &darr; Bus &sharp;16 to Shonan village: 30min<br>
+                Shonan village center (Bus stop)
+            </p>
+        </div>
+    </SpaceLR>
 </Layout>
 
 <style>
@@ -34,7 +47,5 @@ import { Icon } from  "astro-icon";
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
     }
 </style>

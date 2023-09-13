@@ -1,12 +1,13 @@
 ---
+import SpaceLR from '../components/SpaceLR.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="about - EASIT2024">
-	<div class="text-3xl font-bold">
+	<div class="text-3xl font-bold text-center my-2">
 		IEEE East Asian School of Information Theory 2024
 	</div>
-	<div>
+	<div class="text-center mb-2">
 		<ul>
 			<li>
 				July 30 (Tue) - August 2 (Fri), 2024
@@ -17,8 +18,20 @@ import Layout from '../layouts/Layout.astro';
 			<li>
 				on-site only
 			</li>
+			<li>
+				scheduled poster sessions
+			</li>
 		</ul>
 	</div>
+	<SpaceLR start="2" end="12">
+		<h2>about shonan:</h2>
+		<p>
+			A beautiful bay area located near Tokyo.
+			View of the mount Fuji on a bright day.
+			About 1h from Tokyo Haneda airport.
+			Adjacent to Kamakura, a popular sightseeing spot famous for the Great Buddha (Daibutsu).
+		</p>
+	</SpaceLR>
 </Layout>
 
 <style>

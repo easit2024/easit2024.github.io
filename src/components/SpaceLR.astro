@@ -1,0 +1,14 @@
+---
+interface Props {
+    start?: string
+    end?: string
+}
+
+const { start = "1", end = "13" } = Astro.props;
+---
+
+<div class="grid grid-cols-12 gap-4">
+    <div class=`col-start-1 col-end-13 sm:col-start-${start} sm:col-end-${end}`>
+        <slot />
+    </div>
+</div>

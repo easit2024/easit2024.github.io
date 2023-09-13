@@ -1,9 +1,52 @@
 ---
+import SpaceLR from "../components/SpaceLR.astro";
 import Layout from "../layouts/Layout.astro";
+
+// メンバーの必要な情報
+interface CommitteeMember {
+    name: string
+    univ: string
+}
+
+const com = (name: string, univ: string): CommitteeMember => {
+    return { name, univ }
+}
+
+// ここが順番に出力される
+const committee: {[key in string]: CommitteeMember[]} = {
+    "General Co-chairs": [
+        com("Shun Watanabe", "Tokyo University of Agriculture and Technology"),
+        com("Kenji Yasunaga", "Tokyo Institute of Technology"),
+    ],
+    "Finance Chair": [
+        com("Shigeaki Kuzuoka", "Wakayama University"),
+    ],
+    "Publicity Chair": [
+        com("Yujie Gu", "Kyushu University"),
+    ],
+    "Program Chair": [
+        com("Shota Yamada", "National Institute of Advanced Industrial Science and Technology"),
+    ]
+} 
+
 ---
 
 <Layout title="committee - EASIT2024">
-    <div>
-        committee
-    </div>
+    <SpaceLR start="2" end="12">
+        {Object.entries(committee).map(([k, v]) => 
+            <div class="">
+                <span class="text-blue-800 font-medium text-lg">
+                   {k} 
+                </span>
+                <ul class="pl-5">
+                    {v.map(d => 
+                        <li class="mb-2">
+                            <div>{d.name}</div>
+                            <div class="text-sm">{d.univ}</div>
+                        </li>
+                    )}
+                </ul>
+            </div>
+        )}
+    </SpaceLR>
 </Layout>
