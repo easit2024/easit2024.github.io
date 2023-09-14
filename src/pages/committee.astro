@@ -41,8 +41,8 @@ const committee: {[key in string]: CommitteeMember[]} = {
                 <ul class="pl-5">
                     {v.map(d => 
                         <li class="mb-2">
-                            <div>{d.name}</div>
-                            <div class="text-sm">{d.univ}</div>
+                            <span class="text-lg font-medium">{d.name}</span>
+                            <span class="text-sm"> - {d.univ}</span>
                         </li>
                     )}
                 </ul>
