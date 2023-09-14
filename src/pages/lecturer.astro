@@ -5,10 +5,12 @@ import Layout from "../layouts/Layout.astro";
 interface Lecturer {
     name: string
     univ: string
+    title: string
+    abstract: string
 }
 
-const lec = (name: string, univ: string): Lecturer => {
-    return { name, univ }
+const lec = (name: string, univ: string, title: string = "", abstract: string = ""): Lecturer => {
+    return { name, univ, title, abstract }
 }
 
 // ここが順番に表示される
@@ -19,6 +21,9 @@ const lecturers: Lecturer[] = [
     lec("Tianren Liu", "Peking University"),
     lec("Arpita Patra", "Indian Institute of Science, Bangalore"),
     lec("Igal Sason", "Technion"),
+
+    // 後で消すこと
+    lec("dummy", "dummy univ", "dummy title", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."),
 ]
 
 ---
@@ -28,8 +33,12 @@ const lecturers: Lecturer[] = [
         <ul class="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12">
             {lecturers.map((v) => 
                 <li class="mb-2">
-                    <div>{v.name}</div>
-                    <div class="text-sm">{v.univ}</div>
+                    <div>
+                        <span class="text-lg font-medium">{v.name}</span>
+                        <span class="text-sm"> - {v.univ}</span>
+                    </div>
+                    {v.title ? <div class="ml-5"><span class="font-medium">Title: </span>{v.title}</div> : null}
+                    {v.abstract ? <div class="ml-5"><span class="font-medium">Abstract: </span>{v.abstract}</div> : null}
                 </li>
             )}
         </ul>
