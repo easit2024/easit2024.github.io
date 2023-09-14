@@ -1,4 +1,5 @@
 ---
+import Icon from 'astro-icon';
 import Link from './Link.astro';
 
 interface Props {
@@ -8,22 +9,54 @@ interface Props {
 const {} = Astro.props;
 ---
 
-<header class="bg-blue-900 text-white">
-    <h1 class="text-center md:text-left md:pl-3 py-1">
-        <a href="/" class="text-3xl hover:text-indigo-200">
-            IEEE EASIT 2024
-        </a>
+<header class="bg-blue-900 text-white sm:flex">
+    <h1 class="sm:grow p-3 flex">
+        <div class="grow">
+            <a href="/" class="text-3xl hover:text-indigo-200">
+                IEEE EASIT 2024
+            </a>
+        </div>
+        <button class="togglebtn sm:hidden" id="js-btn">
+            <Icon name="charm:menu-hamburger" class="w-6 h-6" />
+            <Icon name="charm:cross" class="w-6 h-6" />
+        </button>
     </h1>
-    <ul>
-        <Link href="/" name="about" />
-        <Link href="/lecturer" name="lecturer" />
-        <Link href="/access" name="access" />
-        <Link href="/committee" name="committee" />
-    </ul>
+
+    <nav class="hidden sm:block navbar" id="js-nav">
+        <ul class="flex h-[100%] items-center">
+            <Link href="/" name="about" />
+            <Link href="/lecturer" name="lecturer" />
+            <Link href="/access" name="access" />
+            <Link href="/committee" name="committee" />
+        </ul>
+    </nav>
 </header>
 
 <style>
     h1 {
         font-family: 'Oswald', sans-serif;
     }
+    .togglebtn.active svg:nth-child(1) {
+        display: none;
+    }
+    .togglebtn svg:nth-child(2) {
+        display: none;
+    }
+    .togglebtn.active svg:nth-child(2) {
+        display: block;
+    }
+    .navbar.active {
+        display: flex;
+        flex-direction: column;
+    }
 </style>
+
+<script>
+const nav = document.getElementById("js-nav");
+const btn = document.getElementById("js-btn");
+
+btn?.addEventListener("click", () => {
+    btn.classList.toggle("active");
+    nav?.classList.toggle("active");
+})
+</script>
