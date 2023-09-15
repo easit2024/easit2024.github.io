@@ -1,6 +1,10 @@
 ---
 import SpaceLR from '../components/SpaceLR.astro';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import daibutsujpg from '../images/daibutsu.jpg';
+import mtfujijpg from '../images/mtfuji.jpg';
 ---
 
 <Layout title="about - EASIT2024">
@@ -25,8 +29,8 @@ import Layout from '../layouts/Layout.astro';
 	</div>
 	<SpaceLR start="2" end="12">
 		<div class="sm:grid sm:grid-cols-6 sm:gap-4">
-			<img src="public/mtfuji.jpg" class="mb-2 sm:col-start-1 sm:col-end-4" />
-			<img src="public/daibutsu.jpg" class="mb-2 sm:col-start-4 sm:col-end-7" />
+			<Image src={mtfujijpg} alt="mt fuji" class="mb-2 sm:col-start-1 sm:col-end-4" />
+			<Image src={daibutsujpg} alt="daibutsu" class="mb-2 sm:col-start-4 sm:col-end-7" />
 		</div>
 		<h2>about shonan:</h2>
 		<p>
