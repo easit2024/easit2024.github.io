@@ -7,16 +7,17 @@ interface Lecturer {
     univ: string
     title: string
     abstract: string
+    biography: string
 }
 
-const lec = (name: string, univ: string, title: string = "", abstract: string = ""): Lecturer => {
-    return { name, univ, title, abstract }
+const lec = (name: string, univ: string, title: string = "", abstract: string = "", biography: string = ""): Lecturer => {
+    return { name, univ, title, abstract, biography }
 }
 
 // ここが順番に表示される
 const lecturers: Lecturer[] = [
     lec("Francesco Buscemi", "Nagoya University", "The Theory of Statistical Comparison: From Majorization to the Quantum Blackwell Theorem and Beyond", "For problems that allow statistical interpretation, such as parameter estimation or information transmission, whenever different strategies are possible, it is natural to compare them on the basis of their statistical performance with respect to the problem at hand. The theory of statistical comparison provides a rigorous formalization of this scenario. In this lecture, I will introduce the basic ideas of the classical theory, including the theory of majorization and the Blackwell-Sherman-Stein theorem, present their extensions to the quantum setting, and discuss applications in information theory (e.g., channel ordering) and quantum foundations (e.g., quantum measurement theory)."),
-    lec("Amin Gohari", "Chinese University of Hong Kong", "The Auxiliary Receiver Approach in Network Information Theory", "The lectures focus on techniques for proving "infeasibility results" for achievable rate regions. In particular, I will present the novel auxiliary receiver approach as a mathematical tool for writing outer bounds in network information theory. The technique's basic idea is to consider one or multiple “auxiliary” receivers and use their past and/or future when identifying the auxiliary random variables. I discuss the application of the technique to some fundamental open problems in network information theory: finding the capacity regions of the broadcast channel, the interference channel, and the relay channel, as well as secret key generation from correlated sources. This technique yields new outer bounds for the relay, interference, and broadcast channel settings. These bounds strictly outperform classical outer bounds at least in some regimes. For instance, we strictly improve on the cutset outer bound for the scalar Gaussian relay channel, the outer bounds for the Gaussian Z-interference channel, and the outer bounds for the two receiver broadcast channels."),
+    lec("Amin Gohari", "Chinese University of Hong Kong", "The Auxiliary Receiver Approach in Network Information Theory", "The lectures focus on techniques for proving \"infeasibility results\" for achievable rate regions. In particular, I will present the novel auxiliary receiver approach as a mathematical tool for writing outer bounds in network information theory. The technique's basic idea is to consider one or multiple “auxiliary” receivers and use their past and/or future when identifying the auxiliary random variables. I discuss the application of the technique to some fundamental open problems in network information theory: finding the capacity regions of the broadcast channel, the interference channel, and the relay channel, as well as secret key generation from correlated sources. This technique yields new outer bounds for the relay, interference, and broadcast channel settings. These bounds strictly outperform classical outer bounds at least in some regimes. For instance, we strictly improve on the cutset outer bound for the scalar Gaussian relay channel, the outer bounds for the Gaussian Z-interference channel, and the outer bounds for the two receiver broadcast channels."),
     lec("Iftach Haitner", "Tel Aviv University"),
     lec("Shuichi Hirahara", "National Institute of Informatics"),
     lec("Tianren Liu", "Peking University"),
@@ -33,7 +34,7 @@ const lecturers: Lecturer[] = [
 <Layout title="EASIT2024">
     <div class="grid grid-col-12 gap-4">
         <ul class="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12">
-            {lecturers.map((v) => 
+            {lecturers.map((v) =>
                 <li class="mb-2">
                     <div>
                         <span class="text-lg font-medium">{v.name}</span>
@@ -41,6 +42,7 @@ const lecturers: Lecturer[] = [
                     </div>
                     {v.title ? <div class="ml-5"><span class="font-medium">Title: </span>{v.title}</div> : null}
                     {v.abstract ? <div class="ml-5"><span class="font-medium">Abstract: </span>{v.abstract}</div> : null}
+                    {v.biography ? <div class="ml-5"><span class="font-medium">Biography: </span>{v.biography}</div> : null}
                 </li>
             )}
         </ul>
