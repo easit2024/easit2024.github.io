@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+    name: string;
+    value: string;
+}
+
+const { name, value } = Astro.props;
+---
+
+<div class="pulldown ml-5">
+    <div class="pulldown-name font-medium flex items-center">
+        <Icon name="akar-icons:chevron-right" class="h-4 w-4 rot90"/>
+        { name }
+    </div>
+    <div class="pulldown-value">
+        <p set:html={value}/>
+    </div>
+</div>
+
+<style>
+    .rot90 {
+        transition: 0.5s;
+    }
+    .rot90.active {
+        transform: rotate(90deg);
+    }
+    .pulldown-value {
+        display: none;
+    }
+    .pulldown-value.active {
+        display: block;
+    }
+</style>
+<script>
+    const pulldowns = document.querySelectorAll('.pulldown');
+
+    pulldowns.forEach((elem) => {
+        elem.children[0].addEventListener('click', () => {
+            elem.children[0].children[0].classList.toggle("active");
+            elem.children[1].classList.toggle("active");
+        })
+    })
+</script>
+
