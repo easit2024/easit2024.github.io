@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import daibutsujpg from '../images/daibutsu.jpg';
 import mtfujijpg from '../images/mtfuji.jpg';
 import shonanvillagejpg from '../images/shonanvillage.jpg';
+import nictpng from '../images/nict.png';
 ---
 
 <Layout title="EASIT2024">
@@ -28,7 +29,7 @@ import shonanvillagejpg from '../images/shonanvillage.jpg';
 	<SpaceLR start="2" end="12">
 		<p>
 			IEEE EASIT 2024 will be held from July 30 to August 2 at Shonan Village Center in Japan.
-			The school offers an opportunity to learn from experts and exchange ideas. 
+			The school offers an opportunity to learn from experts and exchange ideas.
 			Graduate students and young researchers are encouraged to apply with your poster information.
 			The submission deadline is April 1, 2024. See the CFP page!!
 		</p><br />
@@ -45,6 +46,15 @@ import shonanvillagejpg from '../images/shonanvillage.jpg';
 			It's only about an hour away from Tokyo Haneda airport and is
 			next to Kamakura, a popular sightseeing spot famous for the Great Buddha (Daibutsu).
 		</p>
+		<div class="grid grid-cols-12 gap-4 mt-4">
+			<h2 class="font-bold col-start-1 col-end-13">Sponsors</h2>
+			<a href="https://www.nict.go.jp/en/index.html" class="col-start-1 col-end-6 sm:col-start-1 sm:col-end-3">
+				<Image src={nictpng} alt="nict" />
+			</a>
+			<p class="col-start-1 col-end-13 sm:col-start-3 sm:col-end-13">
+				Supported by International Exchange Program of National Institute of Information and Communications Technology  (NICT)
+			</p>
+		</div>
 	</SpaceLR>
 </Layout>
 
