@@ -1,0 +1,116 @@
+---
+import SpaceLR from "./SpaceLR.astro";
+
+const francesco = "Francesco Buscemi"
+const amin = "Amin Gohari"
+const shuichi = "Shuichi Hirahara"
+const mary = "Mary Wootters"
+const iftach = "Iftach Haitner"
+const tianren = "Tianren Liu"
+const arpita = "Arpita Patra"
+
+const f = (name: string | null, i: number | null, rowspan = 1, colspan = 1) => {
+    return {name, i, rowspan, colspan}
+}
+
+const timetable = {
+    "9:00~9:50": [f(francesco, 1), f(francesco, 2), f(amin, 3), f(shuichi, 2)],
+    "9:50~10:10": [f("Break", null, 1, 4)],
+    "10:10~11:00": [f(mary, 1), f(iftach, 2), f(francesco, 3), f(iftach, 3)],
+    "11:00~11:20": [f("Break", null, 1, 4)],
+    "11:20~12:10": [f(tianren, 1), f(amin, 2), f(arpita, 2), f(mary, 3)],
+    "12:10~13:10": [f("lunch", null, 1, 4)],
+    "13:10~14:00": [f(shuichi, 1), f(arpita, 1), f("Excursion to Kamakura", null, 7), f(arpita, 3)],
+    "14:00~14:20": [f("Break", null, 1, 2), f(null, null), f("Break", null)],
+    "14:20~15:10": [f(amin, 1), f(mary, 2), f(null, null), f(tianren, 3)],
+    "15:10~15:20": [f("Break", null, 1, 2), f(null, null), f("Break", null)],
+    "15:30~16:20": [f(iftach, 1), f(tianren, 2), f(null, null), f(shuichi, 3)],
+    "16:20~16:40": [f("Break", null, 1, 2), f(null, null), f("", null)],
+    "16:40~18:10": [f("Poster Session", null), f("Poster Session", null), f(null, null), f("", null)],
+}
+
+const date = [
+    "July 30 Tuesday",
+    "July 31 Wednesday",
+    "August 1 Thursday",
+    "August 2 Friday",
+]
+
+---
+
+<>
+    <div class="flex justify-center">
+        <table class="divide-y divide-gray-200 hidden md:block">
+            <caption>
+                EASIT2024 Time Schedule
+            </caption>
+            <thead>
+                <tr>
+                    <td class="bg-blue-500"></td>
+                    <th scope="col" class="bg-blue-500 px-4 py-3 text-center text-lg font-medium text-white">July 30 Tuesday</th>
+                    <th scope="col" class="bg-blue-500 px-4 py-3 text-center text-lg font-medium text-white">July 31 Wednesday</th>
+                    <th scope="col" class="bg-blue-500 px-4 py-3 text-center text-lg font-medium text-white">August 1 Thursday</th>
+                    <th scope="col" class="bg-blue-500 px-4 py-3 text-center text-lg font-medium text-white">August 2 Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                {Object.entries(timetable).map(([k, v]) =>
+                    <tr class="odd:bg-white even:bg-gray-100">
+                        <th scope="row" class="px-4 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-800">{k}</th>
+                        {v.map(v1 => {
+                            if (v1.name !== null) {
+                                return <td rowspan={v1.rowspan} colspan={v1.colspan} class="px-4 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-800">
+                                    {v1.name}
+                                    {v1.i !== null ? <><br/>Tutorial {v1.i}</> : ""}
+                                </td>
+                            }
+                        })}
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    </div>
+    {[1, 2, 3, 4].map((i) =>
+        <table class="table-fixed divide-y divide-gray-200 block md:hidden">
+            {
+                i == 1 ?
+                <caption>
+                    EASIT2024 Time Schedule
+                </caption>
+                : null
+            }
+
+            <thead class="w-[100%]">
+                <tr>
+                    <td class="bg-blue-500"></td>
+                    <th scope="col" class="px-4 py-3 bg-blue-500 text-center text-md font-medium text-white">{date[i - 1]}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {Object.entries(timetable).map(([k, v]) =>
+                    <tr class="odd:bg-white even:bg-gray-100">
+                        <th scope="row" class="px-4 py-3 text-center whitespace-nowrap text-sm font-medium text-gray-800">{k}</th>
+                        {((target: number) => {
+                            let i = 0
+                            let cols = 0
+                            while (cols + v[i].colspan < target) {
+                                cols += v[i].colspan
+                                i++
+                            }
+                            return v[i].name !== null ?
+                                <td rowspan={v[i].rowspan} class="w-[100vw] text-center whitespace-nowrap text-sm font-medium text-gray-800">
+                                    {v[i].name}
+                                    {v[i].i !== null ? <><br/>Tutorial {v[i].i}</> : ""}
+                                </td>
+                            : null
+                        })(i)}
+                    </tr>
+                )}
+            </tbody>
+        </table>
+    )}
+</>
+
+<style>
+
+</style>
